@@ -13,6 +13,9 @@ app.use(express.urlencoded());
 app.use(morgan("tiny"));
 app.use("/api", apiRoutes);
 app.use(express.static("public"));
+app.get("/stats", async (req,res) =>{
+    res.sendFile(__dirname + "/public/stats.html")
+})
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true, useUnifiedTopology : true,
