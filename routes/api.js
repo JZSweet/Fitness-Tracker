@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/workouts", async (req, res) => {
-    const allExercises = await db.Workout.find();
+    const allExercises = await db.Workout.findOne();
     res.json(allExercises);
 });
 
@@ -32,8 +32,7 @@ router.get("/workouts/range", async (req, res) => {
 // });
 router.post("/workouts", async (req, res) => {
     try {
-        const allExercises = await db.Workout.create({});
-        res.json(allExercises);
+        const allExercises = await db.Workout.create({exercises:[]});
         res.status(201).json(allExercises);
     } catch (err) {
         res.status('403')
@@ -43,16 +42,16 @@ router.post("/workouts", async (req, res) => {
 
 router.put("/workouts/:id", async (req, res) => {
     try {
-        const updateExercises = await db.Workout.findByIdAndUpdate(
-            req.params.id,
+        const updateExercises = await db.Workout.findOneAndUpdate(
+            {_id: req.params.id},
             {
                 $push: {
                     exercises: req.body
                 }
             }
-        );
-        res.json(updateExercises);
-    } catch (err) {
+            );
+            res.json(updateExercises);
+        } catch (err) {
         res.status('403')
         res.send(`Failed with: ${err}`)
     }
