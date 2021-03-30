@@ -27,9 +27,6 @@ router.get("/workouts/range", async (req, res) => {
     res.json(allExercises);
 });
 
-// router.post("/workouts", async (req, res) => {
-// 
-// });
 router.post("/workouts", async (req, res) => {
     try {
         const allExercises = await db.Workout.create({exercises:[]});
