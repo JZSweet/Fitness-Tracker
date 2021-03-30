@@ -1,7 +1,7 @@
 # Fitness-Tracker
 
 ## URL
-
+https://fitness-tracker-jz.herokuapp.com/?id=60628aaa5a725f00154fd6db
 
 ## Description
 * a workout tracker. 
@@ -17,4 +17,5 @@
 
 * View the total duration of each workout from the past seven workouts on the `stats` page.
 
-
+## Image
+![](assets\img.png)
